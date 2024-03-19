@@ -73,14 +73,31 @@ import plotly.express
 
 # 7 - Agora podemos utilizar uma das várias bibliotecas para plotar gráficos, eu escolhi a plotly
 
-array_a = numpy.loadtxt('vetor_a.txt', dtype=numpy.float64, delimiter=';')
-array_b = numpy.loadtxt('vetor_b.txt', dtype=numpy.float64, delimiter=';')
-array_c = numpy.loadtxt('vetor_c.txt', dtype=numpy.float64, delimiter=';')
-print(array_a)
+# array_a = numpy.loadtxt('vetor_a.txt', dtype=numpy.float64, delimiter=';')
+# array_b = numpy.loadtxt('vetor_b.txt', dtype=numpy.float64, delimiter=';')
+# array_c = numpy.loadtxt('vetor_c.txt', dtype=numpy.float64, delimiter=';')
+# print(array_a)
+#
+# array_abc = numpy.vstack([array_a, array_b, array_c])
+# print(array_abc)
+# array_abc = array_abc.transpose()
+# print(array_abc)
+# fig = plotly.express.line(array_abc)
+# fig.show()
 
-array_abc = numpy.vstack([array_a, array_b, array_c])
-print(array_abc)
-array_abc = array_abc.transpose()
-print(array_abc)
-fig = plotly.express.line(array_abc)
-fig.show()
+
+# from numpy import random
+#
+# x = random.randint(100)
+# print(x)
+
+from tkinter import *
+from tkinter import ttk
+
+root = Tk()
+frm = ttk.Frame(root, padding=10)
+frm.grid()
+ttk.Label(frm, text="Hello World").grid(column=0, row=0)
+ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=0)
+ttk.Label(frm, text="Teste Linha 2 coluna 0 !").grid(column=0, row=1)
+root.mainloop()
