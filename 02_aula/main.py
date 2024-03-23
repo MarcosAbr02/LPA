@@ -10,16 +10,16 @@ print(rex)
 
 
 # 2B - Inserir Atributos com valor fixo
-# class Dog:
-#     def __init__(self):  # o __ refere-se a métodos especiais inv. automaticamente em situações específicas.
-#         self.age = 5
-#
-#
-# # ----main
-# rex = Dog()
-# print(f'A idade do rex é: {rex.age}')
-# caramelo = Dog()
-# print(f'A idade do caramelo é: {caramelo.age}')
+class Dog:
+    def __init__(self):  # o __ refere-se a métodos especiais inv. automaticamente em situações específicas.
+        self.age = 5
+
+
+# ----main
+rex = Dog()
+print(f'A idade do rex é: {rex.age}')
+caramelo = Dog()
+print(f'A idade do caramelo é: {caramelo.age}')
 
 
 # # 2C - Inserir Atributos com passagem de parâmetros no construtor da class
