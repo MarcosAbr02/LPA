@@ -8,7 +8,7 @@ import time
 import numpy
 import plotly.express
 
-# # 1 -Exemplo de criação:
+# 1 -Exemplo de criação:
 # lista_num = numpy.zeros(100000)
 # print(f' 1- Conteúdo da Lista: {lista_num}, o tamanho: {len(lista_num)}')
 # lista_num = numpy.ones(100000)
@@ -28,7 +28,7 @@ import plotly.express
 # end_time = time.time()
 # elapsed_time = end_time - start_time
 # print(f'A criação de um ndarray de 1 bilhão de elementos levou: {elapsed_time}')
-
+#
 # 3- Dá para fazer ainda melhor se definirmo o tipo de dado, exemplo: dado tipo int8 (para valores de 0 - 255)
 # start_time = time.time()
 # ndarray_uint8 = numpy.zeros(1000000000, dtype='uint8')
@@ -85,19 +85,18 @@ import plotly.express
 # fig = plotly.express.line(array_abc)
 # fig.show()
 
-
 # from numpy import random
 #
 # x = random.randint(100)
 # print(x)
 
-from tkinter import *
-from tkinter import ttk
-
-root = Tk()
-frm = ttk.Frame(root, padding=10)
-frm.grid()
-ttk.Label(frm, text="Hello World").grid(column=0, row=0)
-ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=0)
-ttk.Label(frm, text="Teste Linha 2 coluna 0 !").grid(column=0, row=1)
-root.mainloop()
+# from tkinter import *
+# from tkinter import ttk
+#
+# root = Tk()
+# frm = ttk.Frame(root, padding=10)
+# frm.grid()
+# ttk.Label(frm, text="Hello World").grid(column=0, row=0)
+# ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=0)
+# ttk.Label(frm, text="Teste Linha 2 coluna 0 !").grid(column=0, row=1)
+# root.mainloop()

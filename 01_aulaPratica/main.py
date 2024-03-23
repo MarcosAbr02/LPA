@@ -1,58 +1,70 @@
-import pygame
-import numpy
+import pygame as pg
 from pygame import Surface, Rect
 
-W_WIDTH = 576
-W_HEIGHT = 324
+WINDOW_WIDTH = 576
+WINDOW_HEIGHT = 324
+
 # Inicializar o Módulo do PyGame
-pygame.init()
-print('setup start')
+pg.init()
+
+print("setup start")
 # Criação de janela do pygame
-window: Surface = pygame.display.set_mode(size=(W_WIDTH, W_HEIGHT))
+window: Surface = pg.display.set_mode(size=(WINDOW_WIDTH, WINDOW_HEIGHT))
 
 # Carregar imagem e gerar uma superfície
-bg_surf: Surface = pygame.image.load('./asset/bg.png').convert_alpha()
-player1_surf: Surface = pygame.image.load('./asset/player1.png').convert_alpha()
+bg_surface: Surface = pg.image.load('./asset/bg.png').convert_alpha()
+player1_surf: Surface = pg.image.load('./asset/player1.png').convert_alpha()
 
-# Obter o retângulo da superfície
-bg_rect: Rect = bg_surf.get_rect(left=0, top=0)
+# Obter retângulo das superfícies
+bg_rect: Rect = bg_surface.get_rect(left=0, top=0)
 player1_rect: Rect = player1_surf.get_rect(left=100, top=100)
 
-# Desenhar na janela (window)
-window.blit(source=bg_surf, dest=bg_rect)
+# Desenhar na janela
+window.blit(source=bg_surface, dest=bg_rect)
 window.blit(source=player1_surf, dest=player1_rect)
 
 # Atualizar a janela
-pygame.display.flip()
+pg.display.flip()
 
 # Colocar um relógio no nosso jogo
-clock = pygame.time.Clock()
+clock = pg.time.Clock()
 
-# Carregar musica e deixar ela tocando
-pygame.mixer_music.load('./asset/fase1.mp3')
-pygame.mixer_music.play(-1)
-pygame.mixer_music.set_volume(0.3)
-print('setup end')
-print('loop start')
-while True:
-    clock.tick(140)  # esse loop está acontecendo 30 vezes por segundo
-    # print(f'{clock.get_fps() :.0f}')  # executar o print o fps
-    window.blit(source=bg_surf, dest=bg_rect)
+# Carregar som
+pg.mixer_music.load("./asset/fase1.mp3")
+pg.mixer_music.set_volume(0.1)
+pg.mixer_music.play(-1, fade_ms=5000)
+
+print("setup end")
+# Loop de funcionamento do jogo
+print("loop start")
+running = True
+while running:
+    # Esse loop vai acontecer x vezes por segundo
+    clock.tick(140)
+    # print(f'{clock.get_fps():.0f}')
+
+    # Atualização dos elementos na tela após cada loop
+    window.blit(source=bg_surface, dest=bg_rect)
     window.blit(source=player1_surf, dest=player1_rect)
-    pygame.display.flip()
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            print('loop end')
-            pygame.quit()
-            quit()
-    pressed_key = pygame.key.get_pressed()
-    if pressed_key[pygame.K_w]:
-        player1_rect.centery -= 1
-    if pressed_key[pygame.K_s]:
-        player1_rect.centery += 1
-    if pressed_key[pygame.K_d]:
-        player1_rect.centerx += 1
-    if pressed_key[pygame.K_a]:
-        player1_rect.centerx -= 1
-        pass
-#
+    pg.display.flip()
+
+    # Evento para fechar a janela do pygame
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            running = False
+
+    # Movimentação do jogador
+    pressed_key = pg.key.get_pressed()
+    if pressed_key[pg.K_w]:
+        player1_rect.centery -= 2
+    if pressed_key[pg.K_s]:
+        player1_rect.centery += 2
+    pressed_key = pg.key.get_pressed()
+    if pressed_key[pg.K_a]:
+        player1_rect.centerx -= 2
+    pressed_key = pg.key.get_pressed()
+    if pressed_key[pg.K_d]:
+        player1_rect.centerx += 2
+
+print("loop end")
+pg.quit()
