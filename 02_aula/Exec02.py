@@ -5,8 +5,7 @@ class Peca:
         self.preco = preco
 
     def exibirPeca(self):
-        print(f'Peça: {self.nome}, Fabricante: {self.fabricante}, Preço: {self.preco:.2f}')
-        print()
+        print(f'Peça: {self.nome}, Fabricante: {self.fabricante}, Preço: {self.preco:.2f}\n')
 
     def getNome(self):
         return self.nome
@@ -31,9 +30,7 @@ while True:
                 preco = float(input("Valor da peça:"))
                 break
             except ValueError:
-                print()
-                print("Insira um valor válido!")
-                print()
+                print("\nInsira um valor válido!\n")
                 continue
 
         regPeca = Peca(nome, fabricante, preco)
@@ -41,42 +38,35 @@ while True:
         print()
 
     elif opcao == "2":
-        if len(registro) == 0:
-            print()
-            print("Não há registros a serem exibidos")
-            print()
+        if not registro:
+            print("\nNão há registros a serem exibidos\n")
             continue
 
-        print()
-        print("Lista atualizada")
-        print()
+        print("\nLista atualizada\n")
         for i in range(len(registro)):
             print(f"Registro {(i + 1)}:")
             registro[i].exibirPeca()
 
     elif opcao == "3":
-        if len(registro) == 0:
-            print()
-            print("Não há registros a serem exibidos")
-            print()
+        if not registro:
+            print("\nNão há registros a serem exibidos\n")
             continue
 
         nomePeca = input("Nome da peça>>>")
 
         achou = False
-        for i in range(len(registro)):
+        for peca in registro:
 
-            if nomePeca == registro[i].getNome():
+            if nomePeca == peca.getNome():
                 print()
-                registro[i].exibirPeca()
+                peca.exibirPeca()
                 achou = True
                 break
         if not achou:
-            print()
-            print("Nenhuma peça com esse nome foi encontrada")
-            print()
+            print("\nNenhuma peça com esse nome foi encontrada\n")
+
+    elif opcao == "4":
+        break
 
     else:
-        print()
-        print("Escolha uma opção!")
-        print()
+        print("\nEscolha uma opção!\n")
