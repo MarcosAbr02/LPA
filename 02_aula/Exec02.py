@@ -7,7 +7,7 @@ class Peca:
     def exibirPeca(self):
         print(f'Peça: {self.nome}, Fabricante: {self.fabricante}, Preço: {self.preco:.2f}\n')
 
-    def getNome(self):
+    def getNome(self) -> str:
         return self.nome
 
 
