@@ -39,7 +39,6 @@ while True:
                 break
             except ValueError:
                 print("Insira um valor coerente.")
-                continue
 
         titular = input("Titular>>> ")
 
