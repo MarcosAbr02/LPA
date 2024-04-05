@@ -1,10 +1,12 @@
+import random
+
 import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
 
 from .Entity import Entity
 from .EntityFactory import EntityFactory
-from .Const import COLOR, MENU_OPTION
+from .Const import COLOR, MENU_OPTION, EVENT_ENEMY
 
 
 class Level:
@@ -17,6 +19,8 @@ class Level:
         self.entity_list.append(EntityFactory.get_entity("Player1"))
         if menu_option in [MENU_OPTION[1], MENU_OPTION[2]]:
             self.entity_list.append(EntityFactory.get_entity("Player2"))
+
+        pygame.time.set_timer(EVENT_ENEMY, 3000)
 
     def run(self):
         clock = pygame.time.Clock()
@@ -45,11 +49,16 @@ class Level:
 
             # Checa todos os eventos
             for event in pygame.event.get():
+                choice = random.choice(("Enemy1", "Enemy2"))
+                if event.type == EVENT_ENEMY:
+                    self.entity_list.append(EntityFactory.get_entity(choice))
+
                 # Verificar se o jogo foi fechado
                 if event.type == pygame.QUIT:
                     print("Janela Fechada")
                     return 'exit'
 
+                # Retorna ao menu
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         print("Esc pressionado")

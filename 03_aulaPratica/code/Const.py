@@ -13,6 +13,8 @@ WIN_WIDTH = 576
 WIN_HEIGHT = 324
 
 # E
+EVENT_ENEMY = pygame.USEREVENT + 1
+
 ENTITY_SPEED = {'Level1Bg0': 0,
                 'Level1Bg1': 1,
                 'Level1Bg2': 2,
@@ -22,7 +24,8 @@ ENTITY_SPEED = {'Level1Bg0': 0,
                 'Level1Bg6': 6,
                 'Player1': 3,
                 'Player2': 3,
-                'Entity': 4
+                'Enemy1': 2,
+                'Enemy2': 1,
                 }
 
 # P
@@ -31,4 +34,4 @@ PLAYER_KEYS = {
         {"UP": pygame.K_UP, "DOWN": pygame.K_DOWN, "LEFT": pygame.K_LEFT, "RIGHT": pygame.K_RIGHT},
     "Player2":
         {"UP": pygame.K_w, "DOWN": pygame.K_s, "LEFT": pygame.K_a, "RIGHT": pygame.K_d}
-    }
+}
