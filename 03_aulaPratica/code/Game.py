@@ -28,7 +28,7 @@ class Game:
                 elif level_return == "menu":
                     print("Level encerrado")
                     continue
-            elif menu_return == "exit" or MENU_OPTION[3]:
+            else:
                 print("Game encerrado")
                 pygame.quit()
                 break

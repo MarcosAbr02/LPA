@@ -29,6 +29,9 @@ class Grupo:
     def adicionar_membro(self, membro):
         self.membros.append(membro)
 
+    def remover_membro(self, membro):
+        self.membros.remove(membro)
+
     def receber_notificacao(self, remetente, mensagem):
         print(f"Grupo {self.nome}: Nova mensagem de {remetente}: {mensagem}")
 

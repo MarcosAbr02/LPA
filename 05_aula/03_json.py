@@ -13,7 +13,6 @@ class Dog:
         pass
 
 
-
 # Criando um objeto da classe Dog
 dog = Dog("Luke", 9, 45, 0.8, "Pastor Alemão")
 
@@ -36,10 +35,14 @@ with open(file_path, "w") as json_file:
 print("Objeto da classe Dog salvo em formato JSON.")
 print("Dados salvos em JSON.")
 
-
 with open(file_path, "r") as json_file:
     loaded_data = json.load(json_file)
 
 print("Dados carrregados do JSON:")
 print(loaded_data)
 
+retorned_dog = (
+    loaded_data["name"], loaded_data["age"], loaded_data["weight"], loaded_data["height"], loaded_data["breed"])
+
+print("Objeto instânciado por meio dos dados retornados:")
+print(retorned_dog)
