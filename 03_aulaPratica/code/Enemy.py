@@ -1,14 +1,15 @@
 import random
 
-from .Entity import Entity
 from .Const import ENTITY_SPEED, ENTITY_SHOT_DELAY, WIN_HEIGHT
 from .EnemyShot import EnemyShot
+from .Entity import Entity
 
 
 class Enemy(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
-        self.shot_delay = ENTITY_SHOT_DELAY[self.name]
+        # Atirar um pouco após entrar em tela
+        self.shot_delay = 10
         # 1 Para ser escolhida uma direção logo no primeiro frame
         self.movement_delay = 1
         self.choice: str = "None"
@@ -25,12 +26,15 @@ class Enemy(Entity):
             self.rect.centery += ENTITY_SPEED[self.name]
             self.choice = "down"
             self.movement_delay = 60
+
         elif self.rect.bottom >= WIN_HEIGHT:
             self.rect.centery -= ENTITY_SPEED[self.name]
             self.choice = "up"
             self.movement_delay = 60
+
         elif self.choice == "up":
             self.rect.centery -= ENTITY_SPEED[self.name]
+
         elif self.choice == "down":
             self.rect.centery += ENTITY_SPEED[self.name]
 

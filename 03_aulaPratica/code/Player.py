@@ -1,7 +1,7 @@
 import pygame.key
 
-from .Entity import Entity
 from .Const import WIN_HEIGHT, WIN_WIDTH, ENTITY_SPEED, PLAYER_KEYS, ENTITY_SHOT_DELAY
+from .Entity import Entity
 from .PlayerShot import PlayerShot
 
 
@@ -36,4 +36,4 @@ class Player(Entity):
                 if self.name == "Player1":
                     return PlayerShot(f"{self.name}Shot", (self.rect.centerx, self.rect.centery))
                 elif self.name == "Player2":
-                    return PlayerShot(f"{self.name}Shot", (self.rect.right, self.rect.centery-6))
+                    return PlayerShot(f"{self.name}Shot", (self.rect.right, self.rect.centery - 6))

@@ -4,12 +4,12 @@ import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
 
+from .Const import COLOR, MENU_OPTION, EVENT_ENEMY, WIN_WIDTH, WIN_HEIGHT
+from .Enemy import Enemy
 from .Entity import Entity
 from .EntityFactory import EntityFactory
-from .Const import COLOR, MENU_OPTION, EVENT_ENEMY, WIN_WIDTH, WIN_HEIGHT
 from .EntityMediator import EntityMediator
 from .Player import Player
-from .Enemy import Enemy
 
 
 class Level:

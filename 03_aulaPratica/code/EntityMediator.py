@@ -1,8 +1,8 @@
-from .Entity import Entity
-from .Enemy import Enemy
-from .PlayerShot import PlayerShot
 from .Const import WIN_WIDTH
+from .Enemy import Enemy
 from .EnemyShot import EnemyShot
+from .Entity import Entity
+from .PlayerShot import PlayerShot
 
 
 class EntityMediator:

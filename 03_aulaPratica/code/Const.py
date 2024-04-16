@@ -52,8 +52,8 @@ ENTITY_HEALTH = {'Level1Bg0': 1,
 
 ENTITY_SHOT_DELAY = {'Player1': 30,
                      'Player2': 30,
-                     'Enemy1': 90,
-                     'Enemy2': 90}
+                     'Enemy1': 70,
+                     'Enemy2': 70}
 
 # P
 PLAYER_KEYS = {

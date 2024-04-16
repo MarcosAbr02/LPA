@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 import pygame
 from pygame import Surface
+
 from .Const import ENTITY_HEALTH
 
 

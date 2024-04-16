@@ -29,15 +29,15 @@ class JsonSqliteAdapter:
 
 
 # Exemplo de uso
-if __name__ == "__main__":
-    adapter = JsonSqliteAdapter("data.db")
-    adapter.connect()
 
-    data_to_save = [{"name": "Alice", "age": 25}, {"name": "Bob", "age": 30}]
-    adapter.save_data(data_to_save)
+adapter = JsonSqliteAdapter("data.db")
+adapter.connect()
 
-    loaded_data = adapter.load_data()
-    for item in loaded_data:
-        print(item)
+data_to_save = [{"name": "Alice", "age": 25}, {"name": "Bob", "age": 30}]
+adapter.save_data(data_to_save)
 
-    adapter.close()
+loaded_data = adapter.load_data()
+for item in loaded_data:
+    print(item)
+
+adapter.close()
