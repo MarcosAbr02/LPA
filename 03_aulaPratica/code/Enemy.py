@@ -15,7 +15,7 @@ class Enemy(Entity):
         self.choice: str = "None"
 
     def move(self):
-        self.rect.centerx -= ENTITY_SPEED[self.name]
+        self.rect.centerx -= self.speed
 
         self.movement_delay -= 1
         if self.movement_delay == 0:
@@ -23,25 +23,25 @@ class Enemy(Entity):
             self.choice = random.choice(("up", "down"))
 
         if self.rect.top <= 0:
-            self.rect.centery += ENTITY_SPEED[self.name]
+            self.rect.centery += self.speed
             self.choice = "down"
             self.movement_delay = 60
 
         elif self.rect.bottom >= WIN_HEIGHT:
-            self.rect.centery -= ENTITY_SPEED[self.name]
+            self.rect.centery -= self.speed
             self.choice = "up"
             self.movement_delay = 60
 
         elif self.choice == "up":
-            self.rect.centery -= ENTITY_SPEED[self.name]
+            self.rect.centery -= self.speed
 
         elif self.choice == "down":
-            self.rect.centery += ENTITY_SPEED[self.name]
+            self.rect.centery += self.speed
 
     def shoot(self):
         self.shot_delay -= 1
         if self.shot_delay == 0:
-            self.shot_delay = ENTITY_SHOT_DELAY[self.name] + random.randint(0, 100)
+            self.shot_delay = ENTITY_SHOT_DELAY[self.name] + random.randint(0, 30)
             if self.name == "Enemy1":
                 return EnemyShot(f"{self.name}Shot", (self.rect.left - 10, self.rect.centery))
             elif self.name == "Enemy2":

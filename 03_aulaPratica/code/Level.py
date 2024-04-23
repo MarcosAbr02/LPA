@@ -34,8 +34,8 @@ class Level:
         pygame.mixer_music.set_volume(0.07)
         pygame.mixer_music.play(-1, fade_ms=5000)
 
-        speed = 60
-        show_text_frames = 0
+        speed = 60  # fps
+        text_frames = 0
         while True:
             # Execuções por segundo
             clock.tick(speed)
@@ -49,22 +49,16 @@ class Level:
                     if shoot is not None:
                         self.entity_list.append(shoot)
 
+                # Exibir atributo health do(s) player(s)
+                if isinstance(ent, Player):
+                    self.show_status(ent)
+
             # FPS na tela
-            if clock.get_fps() >= 60:
-                self.fps_text(10, f"fps: {clock.get_fps():.2f}", COLOR["YELLOW"], (10, 10))
-            else:
-                self.fps_text(10, f"fps: {clock.get_fps():.2f}", COLOR["WHITE"], (10, 10))
+            self.show_fps(clock)
 
-            self.fps_text(10, f"Entidades: {len(self.entity_list)}", COLOR["WHITE"], (10, 20))
+            # Turbo Mode
+            text_frames = self.turbo_mode_text(text_frames, speed)
 
-            # TEXTO DO TURBO MODE
-            if show_text_frames > 0:
-                if speed == 120:
-                    self.show_text(20, "TURBO MODE: ON", COLOR["YELLOW"], ((WIN_WIDTH / 2), WIN_HEIGHT - 30))
-                    show_text_frames -= 1
-                elif speed == 60:
-                    self.show_text(20, "TURBO MODE: OFF", COLOR["WHITE"], ((WIN_WIDTH / 2), WIN_HEIGHT - 30))
-                    show_text_frames -= 1
             pygame.display.flip()
 
             # VERIFICAR INTERAÇÃO DE ENTIDADES
@@ -91,21 +85,57 @@ class Level:
                     if event.key == pygame.K_t:
                         if speed == 60:
                             print("Turbo mode: ON")
-                            show_text_frames = 240
+                            text_frames = 240
                             speed = 120
                         else:
                             print("Turbo mode: OFF")
-                            show_text_frames = 120
+                            text_frames = 120
                             speed = 60
 
-    def fps_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
+    def show_centered_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
+        # Nesta função a orientação do texto é centralizada. O que pode não ser a melhor das escolhas em alguns casos
+        text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
+        text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
+        text_rect: Rect = text_surf.get_rect(center=text_center_pos)
+        self.window.blit(source=text_surf, dest=text_rect)
+
+    def show_left_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
+        # Nesta a orientação é à esquerda do texto
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
         self.window.blit(source=text_surf, dest=text_rect)
 
-    def show_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
-        text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
-        text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
-        text_rect: Rect = text_surf.get_rect(center=text_center_pos)
-        self.window.blit(source=text_surf, dest=text_rect)
+    def show_status(self, ent: Entity):
+        position = 10
+        if ent.name == "Player2":
+            position = 20
+        # Desenhar vida e pontuação na tela
+        if ent.health == 300:
+            color = COLOR["CYAN"]
+        elif 300 > ent.health >= 200:
+            color = COLOR["GREEN"]
+        elif 200 > ent.health >= 100:
+            color = COLOR["YELLOW"]
+        else:
+            color = COLOR["ORANGE"]
+
+        self.show_left_text(10, f"{ent.name}: {ent.health} | Score: {ent.score}", color, ((WIN_WIDTH - 170), position))
+
+    def show_fps(self, clock):
+        if clock.get_fps() >= 60:
+            self.show_centered_text(10, f"fps: {clock.get_fps():.2f}", COLOR["YELLOW"], (40, 10))
+        else:
+            self.show_centered_text(10, f"fps: {clock.get_fps():.2f}", COLOR["WHITE"], (40, 10))
+
+        self.show_centered_text(10, f"Entidades: {len(self.entity_list)}", COLOR["WHITE"], (40, 20))
+
+    def turbo_mode_text(self, frames: int, speed: int):
+        if frames > 0:
+            if speed == 120:
+                self.show_centered_text(20, "TURBO MODE: ON", COLOR["YELLOW"], ((WIN_WIDTH / 2), WIN_HEIGHT - 30))
+            elif speed == 60:
+                self.show_centered_text(20, "TURBO MODE: OFF", COLOR["WHITE"], ((WIN_WIDTH / 2), WIN_HEIGHT - 30))
+            return frames - 1
+        else:
+            return 0
