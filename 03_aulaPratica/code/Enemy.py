@@ -1,6 +1,6 @@
 import random
 
-from .Const import ENTITY_SPEED, ENTITY_SHOT_DELAY, WIN_HEIGHT
+from .Const import ENTITY_SHOT_DELAY, WIN_HEIGHT, WIN_WIDTH
 from .EnemyShot import EnemyShot
 from .Entity import Entity
 
@@ -17,25 +17,34 @@ class Enemy(Entity):
     def move(self):
         self.rect.centerx -= self.speed
 
-        self.movement_delay -= 1
-        if self.movement_delay == 0:
-            self.movement_delay = 60
-            self.choice = random.choice(("up", "down"))
+        if self.rect.right <= 0:
+            self.rect.left = WIN_WIDTH
 
+        self.movement_delay -= 1
+
+        # Nave encostou na parte superior da tela
         if self.rect.top <= 0:
             self.rect.centery += self.speed
             self.choice = "down"
             self.movement_delay = 60
 
+        # Nave encostou na parte inferior da tela
         elif self.rect.bottom >= WIN_HEIGHT:
             self.rect.centery -= self.speed
             self.choice = "up"
             self.movement_delay = 60
 
-        elif self.choice == "up":
+        # Delay chegou a 0
+        elif self.movement_delay == 0:
+            # Recarrega o delay
+            self.movement_delay = 60
+            self.choice = random.choice(("up", "down"))
+
+        # Continua se movendo enquanto a escolha não for alterada
+        if self.choice == "up":
             self.rect.centery -= self.speed
 
-        elif self.choice == "down":
+        else:
             self.rect.centery += self.speed
 
     def shoot(self):

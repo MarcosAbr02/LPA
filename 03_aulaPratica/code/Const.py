@@ -34,7 +34,12 @@ ENTITY_SPEED = {
     'Enemy1': 2,
     'Enemy1Shot': 4,
     'Enemy2': 1,
-    'Enemy2Shot': 3
+    'Enemy2Shot': 3,
+    'Level2Bg0': 0,
+    'Level2Bg1': 1,
+    'Level2Bg2': 2,
+    'Level2Bg3': 3,
+    'Level2Bg4': 4,
 }
 
 ENTITY_HEALTH = {
@@ -53,6 +58,11 @@ ENTITY_HEALTH = {
     'Player2Shot': 1,
     'Enemy1Shot': 1,
     'Enemy2Shot': 1,
+    'Level2Bg0': 1,
+    'Level2Bg1': 1,
+    'Level2Bg2': 1,
+    'Level2Bg3': 1,
+    'Level2Bg4': 1,
 }
 
 ENTITY_SHOT_DELAY = {
@@ -77,7 +87,12 @@ ENTITY_DAMAGE = {
     'Player1Shot': 100,
     'Player2Shot': 200,
     'Enemy1Shot': 50,
-    'Enemy2Shot': 100
+    'Enemy2Shot': 100,
+    'Level2Bg0': 0,
+    'Level2Bg1': 0,
+    'Level2Bg2': 0,
+    'Level2Bg3': 0,
+    'Level2Bg4': 0,
 }
 
 ENTITY_SCORE = {
@@ -95,7 +110,12 @@ ENTITY_SCORE = {
     'Player1Shot': 0,
     'Player2Shot': 0,
     'Enemy1Shot': 0,
-    'Enemy2Shot': 0
+    'Enemy2Shot': 0,
+    'Level2Bg0': 0,
+    'Level2Bg1': 0,
+    'Level2Bg2': 0,
+    'Level2Bg3': 0,
+    'Level2Bg4': 0
 }
 
 # P
