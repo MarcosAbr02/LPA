@@ -32,7 +32,6 @@ class Player(Entity):
             self.shot_delay = ENTITY_SHOT_DELAY[self.name]
             pressed_key = pygame.key.get_pressed()
             if pressed_key[PLAYER_KEYS[self.name]["SHOOT"]]:
-                print(f"Disparo por {self.name}")
                 if self.name == "Player1":
                     return PlayerShot(f"{self.name}Shot", (self.rect.centerx, self.rect.centery))
                 elif self.name == "Player2":

@@ -10,7 +10,6 @@ class EntityFactory:
 
     @staticmethod
     def get_entity(entity_name: str, position: tuple = (0, 0)):
-        print(f"Entidade {entity_name} Criada")
         match entity_name:
             case "Level1Bg":
                 list_bg = []

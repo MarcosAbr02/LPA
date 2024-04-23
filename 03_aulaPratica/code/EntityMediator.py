@@ -20,11 +20,9 @@ class EntityMediator:
     def __verify_collision_window(ent: Entity):
         if isinstance(ent, (Enemy, EnemyShot)):
             if ent.rect.right <= 0:
-                print(f"Entidade {ent.name} destruída por colisão de tela")
                 ent.health = 0
         if isinstance(ent, PlayerShot):
             if ent.rect.left >= WIN_WIDTH:
-                print(f"Entidade {ent.name} destruída por colisão de tela")
                 ent.health = 0
 
     @staticmethod
@@ -55,7 +53,6 @@ class EntityMediator:
         for ent in entity_list:
             if ent.health <= 0:
                 entity_list.remove(ent)
-                print(f"{ent.name} removida por health")
 
                 if isinstance(ent, Enemy):
                     EntityMediator.__give_score(ent, entity_list)

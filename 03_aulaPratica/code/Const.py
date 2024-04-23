@@ -17,6 +17,7 @@ WIN_HEIGHT = 324
 
 # E
 EVENT_ENEMY = pygame.USEREVENT + 1
+EVENT_TIMEOUT = pygame.USEREVENT + 2
 
 ENTITY_SPEED = {
     'Level1Bg0': 0,
@@ -57,8 +58,8 @@ ENTITY_HEALTH = {
 ENTITY_SHOT_DELAY = {
     'Player1': 20,
     'Player2': 30,
-    'Enemy1': 30,
-    'Enemy2': 40
+    'Enemy1': 40,
+    'Enemy2': 50
 }
 
 ENTITY_DAMAGE = {

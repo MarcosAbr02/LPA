@@ -4,7 +4,7 @@ import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from .Const import COLOR, MENU_OPTION, EVENT_ENEMY, WIN_WIDTH, WIN_HEIGHT
+from .Const import COLOR, MENU_OPTION, EVENT_ENEMY, WIN_WIDTH, WIN_HEIGHT, EVENT_TIMEOUT
 from .Enemy import Enemy
 from .Entity import Entity
 from .EntityFactory import EntityFactory
@@ -24,6 +24,7 @@ class Level:
             self.entity_list.append(EntityFactory.get_entity("Player2"))
 
         pygame.time.set_timer(EVENT_ENEMY, 3000)
+        pygame.time.set_timer(EVENT_TIMEOUT, 30000)  # 30 Segundos
 
     def run(self):
         clock = pygame.time.Clock()
@@ -70,6 +71,9 @@ class Level:
                 choice = random.choice(("Enemy1", "Enemy2"))
                 if event.type == EVENT_ENEMY:
                     self.entity_list.append(EntityFactory.get_entity(choice))
+
+                if event.type == EVENT_TIMEOUT:
+                    return True
 
                 # Verificar se o jogo foi fechado
                 if event.type == pygame.QUIT:
@@ -124,11 +128,11 @@ class Level:
 
     def show_fps(self, clock):
         if clock.get_fps() >= 60:
-            self.show_centered_text(10, f"fps: {clock.get_fps():.2f}", COLOR["YELLOW"], (40, 10))
+            self.show_left_text(10, f"fps: {clock.get_fps():.2f}", COLOR["YELLOW"], (20, 10))
         else:
-            self.show_centered_text(10, f"fps: {clock.get_fps():.2f}", COLOR["WHITE"], (40, 10))
+            self.show_left_text(10, f"fps: {clock.get_fps():.2f}", COLOR["WHITE"], (20, 10))
 
-        self.show_centered_text(10, f"Entidades: {len(self.entity_list)}", COLOR["WHITE"], (40, 20))
+        self.show_left_text(10, f"Entidades: {len(self.entity_list)}", COLOR["WHITE"], (20, 20))
 
     def turbo_mode_text(self, frames: int, speed: int):
         if frames > 0:

@@ -26,9 +26,14 @@ class Game:
                     print("Level encerrado")
                     pygame.quit()
                     break
+
                 elif level_return == "menu":
                     print("Level encerrado")
                     continue
+
+                elif level_return:
+                    level = Level(self.window, "Level2", menu_return)
+                    level_return = level.run()
             else:
                 print("Game encerrado")
                 pygame.quit()
