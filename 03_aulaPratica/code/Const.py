@@ -67,7 +67,7 @@ ENTITY_HEALTH = {
 
 ENTITY_SHOT_DELAY = {
     'Player1': 20,
-    'Player2': 30,
+    'Player2': 35,
     'Enemy1': 40,
     'Enemy2': 50
 }
