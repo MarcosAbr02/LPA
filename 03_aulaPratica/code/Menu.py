@@ -11,7 +11,7 @@ class Menu:
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self):
-        print("Menu iniciado")
+        print("MENU iniciado")
 
         # Configuração da música do menu
         pygame.mixer.music.load("./asset/Menu.mp3")
@@ -32,9 +32,9 @@ class Menu:
             # Exibir opções do Menu
             for i in range(len(MENU_OPTION)):
                 if i == menu_option:
-                    self.menu_text(20, MENU_OPTION[i], COLOR["YELLOW"], ((WIN_WIDTH / 2), 200 + 30 * i))
+                    self.menu_text(20, MENU_OPTION[i], COLOR["YELLOW"], ((WIN_WIDTH / 2), 200 + 25 * i))
                 else:
-                    self.menu_text(20, MENU_OPTION[i], COLOR["WHITE"], ((WIN_WIDTH / 2), 200 + 30 * i))
+                    self.menu_text(20, MENU_OPTION[i], COLOR["WHITE"], ((WIN_WIDTH / 2), 200 + 25 * i))
             pygame.display.flip()
 
             # Checa todos os eventos

@@ -37,13 +37,19 @@ class Level:
         self.game_over = False
 
         # Spawn de inimigos
-        if menu_option == MENU_OPTION[0]:  # Um jogador
-            pygame.time.set_timer(EVENT_ENEMY, 2800)
-        else:  # Dois jogadores
-            pygame.time.set_timer(EVENT_ENEMY, 2000)
+        if self.name == "Level1":
+            if menu_option == MENU_OPTION[0]:  # Um jogador
+                pygame.time.set_timer(EVENT_ENEMY, 2800)
+            else:  # Dois jogadores
+                pygame.time.set_timer(EVENT_ENEMY, 2000)
+        elif self.name == "Level2":
+            if menu_option == MENU_OPTION[0]:  # Um jogador
+                pygame.time.set_timer(EVENT_ENEMY, 2500)
+            else:  # Dois jogadores
+                pygame.time.set_timer(EVENT_ENEMY, 1800)
 
         # Tempo de fase
-        self.timeout = 60000
+        self.timeout = 1000
         pygame.time.set_timer(EVENT_TIMEOUT, 100)  # 100ms
 
         # Botão "i" para exibir informações
@@ -130,7 +136,7 @@ class Level:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         print("Esc pressionado")
-                        return 'menu'
+                        return "menu"
 
                     # Torna visível as informações na tela
                     if event.key == pygame.K_i:

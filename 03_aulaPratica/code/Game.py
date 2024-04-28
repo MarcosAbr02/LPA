@@ -3,6 +3,7 @@ import pygame
 from .Const import WIN_WIDTH, WIN_HEIGHT, MENU_OPTION
 from .Level import Level
 from .Menu import Menu
+from .Score import Score
 
 
 class Game:
@@ -16,7 +17,7 @@ class Game:
         while True:
             menu = Menu(self.window)
             menu_return = menu.run()
-            print("Menu encerrado")
+            print("MENU encerrado")
 
             if menu_return in [MENU_OPTION[0], MENU_OPTION[1], MENU_OPTION[2]]:
                 player_score = [0, 0]
@@ -26,17 +27,42 @@ class Game:
                 level_return = level.run(player_score)
 
                 if level_return == "exit":
-                    print("Level encerrado")
+                    print("LEVEL encerrado")
                     pygame.quit()
                     break
 
                 elif level_return == "menu":
-                    print("Level encerrado")
+                    print("LEVEL encerrado")
                     continue
 
                 elif level_return:
-                    level = Level(self.window, "Level2", menu_return, player_score)
-                    level_return = level.run(player_score)
+                    level2 = Level(self.window, "Level2", menu_return, player_score)
+                    level_return = level2.run(player_score)
+
+                    if level_return == "menu":
+                        print("LEVEL2 Encerrado")
+                        continue
+
+                    elif level_return == "exit":
+                        print("LEVEL2 Encerrado")
+                        pygame.quit()
+                        break
+
+                    elif level_return:
+                        if Score(self.window).save_score(menu_return, player_score) == "menu":
+                            continue
+                        else:
+                            pygame.quit()
+                            break
+
+            elif menu_return == MENU_OPTION[3]:
+                if Score(self.window).show() == "menu":
+                    print("SCORE fechado")
+                    continue
+                else:
+                    pygame.quit()
+                    break
+
             else:
                 print("Game encerrado")
                 pygame.quit()

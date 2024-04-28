@@ -9,6 +9,7 @@ COLOR = {"ORANGE": (255, 128, 0), "WHITE": (255, 255, 255), "YELLOW": (255, 255,
 MENU_OPTION = ('NEW GAME 1P',
                'NEW GAME 2P - COOPERATIVE',
                'NEW GAME 2P - COMPETITIVE',
+               'SCORE',
                'EXIT')
 
 # W
@@ -67,7 +68,7 @@ ENTITY_HEALTH = {
 
 ENTITY_SHOT_DELAY = {
     'Player1': 20,
-    'Player2': 35,
+    'Player2': 40,
     'Enemy1': 40,
     'Enemy2': 50
 }
@@ -130,3 +131,8 @@ PLAYER_KEYS = {
 
 # G
 GAME_SPEED = {"NORMAL": 60, "TURBO": 120}
+
+# S
+SCORE_POS = {'TITLE': (WIN_WIDTH / 2, 25),
+
+             }

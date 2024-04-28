@@ -1,0 +1,5 @@
+Todo esse código foi apenas com intuito de aprender sobre conceitos de programação em um "software" complexo. Diferente
+ de quando aprendi lógica de programação, aqui diversos conceitos se entrelaçam e se comunicam entre si, vi os usos que
+ uma classe pode ter e como organizar o código desde o começo pode facilitar sua escalabilidade, me sinto confortável
+ para começar um projeto sozinho agora, sempre lendo a documentação e entendendo como usar ao máximo determinada
+ biblioteca, no caso a "Pygame" ou outra no futuro.
