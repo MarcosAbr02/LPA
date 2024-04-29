@@ -49,7 +49,7 @@ class Level:
                 pygame.time.set_timer(EVENT_ENEMY, 1800)
 
         # Tempo de fase
-        self.timeout = 1000
+        self.timeout = 10000
         pygame.time.set_timer(EVENT_TIMEOUT, 100)  # 100ms
 
         # Botão "i" para exibir informações

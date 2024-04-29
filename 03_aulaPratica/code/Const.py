@@ -134,5 +134,17 @@ GAME_SPEED = {"NORMAL": 60, "TURBO": 120}
 
 # S
 SCORE_POS = {'TITLE': (WIN_WIDTH / 2, 25),
-
+             'ENTER_NAME': (WIN_WIDTH / 2, 80),
+             'NAME': (WIN_WIDTH / 2, 100),
+             'LABEL': (WIN_WIDTH / 2, 90),
+             0: (WIN_WIDTH / 2, 110),
+             1: (WIN_WIDTH / 2, 130),
+             2: (WIN_WIDTH / 2, 150),
+             3: (WIN_WIDTH / 2, 170),
+             4: (WIN_WIDTH / 2, 190),
+             5: (WIN_WIDTH / 2, 210),
+             6: (WIN_WIDTH / 2, 230),
+             7: (WIN_WIDTH / 2, 250),
+             8: (WIN_WIDTH / 2, 270),
+             9: (WIN_WIDTH / 2, 290),
              }

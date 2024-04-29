@@ -10,13 +10,13 @@ class Menu:
         self.surf = pygame.image.load('./asset/MenuBg.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
-    def run(self):
-        print("MENU iniciado")
-
         # Configuração da música do menu
         pygame.mixer.music.load("./asset/Menu.mp3")
         pygame.mixer_music.set_volume(0.1)
         pygame.mixer_music.play(-1, fade_ms=5000)
+
+    def run(self):
+        print("MENU iniciado")
 
         menu_option = 0
 
